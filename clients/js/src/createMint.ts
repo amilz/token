@@ -1,13 +1,20 @@
 import { getCreateAccountInstruction } from '@solana-program/system';
-import {
-    Address,
-    getMinimumBalanceForRentExemption,
-    InstructionPlan,
-    OptionOrNullable,
-    sequentialInstructionPlan,
-    TransactionSigner,
-} from '@solana/kit';
+import type { Address } from '@solana/addresses';
+import type { OptionOrNullable } from '@solana/codecs';
+import type { InstructionPlan } from '@solana/instruction-plans';
+import { sequentialInstructionPlan } from '@solana/instruction-plans';
+import type { TransactionSigner } from '@solana/signers';
 import { getInitializeMint2Instruction, getMintSize, TOKEN_PROGRAM_ADDRESS } from './generated';
+
+const RENT_ACCOUNT_STORAGE_OVERHEAD = 128n;
+const RENT_DEFAULT_EXEMPTION_THRESHOLD = 2n;
+const RENT_DEFAULT_LAMPORTS_PER_BYTE_YEAR = 3480n;
+
+function getMinimumBalanceForRentExemption(space: bigint): bigint {
+    return (
+        (RENT_ACCOUNT_STORAGE_OVERHEAD + space) * RENT_DEFAULT_LAMPORTS_PER_BYTE_YEAR * RENT_DEFAULT_EXEMPTION_THRESHOLD
+    );
+}
 
 export type CreateMintInstructionPlanInput = {
     /** Funding account (must be a system account). */

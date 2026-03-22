@@ -1,5 +1,6 @@
-import { ClientWithPayer, pipe } from '@solana/kit';
-import { addSelfPlanAndSendFunctions, SelfPlanAndSendFunctions } from '@solana/kit/program-client-core';
+import { pipe } from '@solana/functional';
+import type { ClientWithPayer } from '@solana/plugin-interfaces';
+import { addSelfPlanAndSendFunctions, type SelfPlanAndSendFunctions } from '@solana/program-client-core';
 
 import {
     CreateMintInstructionPlanConfig,

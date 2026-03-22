@@ -1,4 +1,7 @@
-import { InstructionPlan, sequentialInstructionPlan, Address, TransactionSigner } from '@solana/kit';
+import type { Address } from '@solana/addresses';
+import type { InstructionPlan } from '@solana/instruction-plans';
+import { sequentialInstructionPlan } from '@solana/instruction-plans';
+import type { TransactionSigner } from '@solana/signers';
 import {
     findAssociatedTokenPda,
     getCreateAssociatedTokenIdempotentInstruction,
