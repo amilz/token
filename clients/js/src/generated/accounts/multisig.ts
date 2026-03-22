@@ -9,12 +9,19 @@
 import {
     assertAccountExists,
     assertAccountsExist,
-    combineCodec,
     decodeAccount,
     fetchEncodedAccount,
     fetchEncodedAccounts,
-    getAddressDecoder,
-    getAddressEncoder,
+    type Account,
+    type EncodedAccount,
+    type FetchAccountConfig,
+    type FetchAccountsConfig,
+    type MaybeAccount,
+    type MaybeEncodedAccount,
+} from '@solana/accounts';
+import { getAddressDecoder, getAddressEncoder, type Address } from '@solana/addresses';
+import {
+    combineCodec,
     getArrayDecoder,
     getArrayEncoder,
     getBooleanDecoder,
@@ -23,17 +30,10 @@ import {
     getStructEncoder,
     getU8Decoder,
     getU8Encoder,
-    type Account,
-    type Address,
-    type EncodedAccount,
-    type FetchAccountConfig,
-    type FetchAccountsConfig,
     type FixedSizeCodec,
     type FixedSizeDecoder,
     type FixedSizeEncoder,
-    type MaybeAccount,
-    type MaybeEncodedAccount,
-} from '@solana/kit';
+} from '@solana/codecs';
 
 export type Multisig = {
     /** Number of signers required. */

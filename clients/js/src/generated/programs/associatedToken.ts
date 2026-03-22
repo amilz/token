@@ -6,22 +6,20 @@
  * @see https://github.com/codama-idl/codama
  */
 
+import { type Address } from '@solana/addresses';
+import { containsBytes, getU8Encoder, type ReadonlyUint8Array } from '@solana/codecs';
 import {
-    assertIsInstructionWithAccounts,
-    containsBytes,
-    getU8Encoder,
     SOLANA_ERROR__PROGRAM_CLIENTS__FAILED_TO_IDENTIFY_INSTRUCTION,
     SOLANA_ERROR__PROGRAM_CLIENTS__UNRECOGNIZED_INSTRUCTION_TYPE,
     SolanaError,
-    type Address,
+} from '@solana/errors';
+import { assertIsInstructionWithAccounts, type Instruction, type InstructionWithData } from '@solana/instructions';
+import {
     type ClientWithPayer,
     type ClientWithTransactionPlanning,
     type ClientWithTransactionSending,
-    type Instruction,
-    type InstructionWithData,
-    type ReadonlyUint8Array,
-} from '@solana/kit';
-import { addSelfPlanAndSendFunctions, type SelfPlanAndSendFunctions } from '@solana/kit/program-client-core';
+} from '@solana/plugin-interfaces';
+import { addSelfPlanAndSendFunctions, type SelfPlanAndSendFunctions } from '@solana/program-client-core';
 import {
     getCreateAssociatedTokenIdempotentInstructionAsync,
     getCreateAssociatedTokenInstructionAsync,

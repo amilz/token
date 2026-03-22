@@ -6,12 +6,9 @@
  * @see https://github.com/codama-idl/codama
  */
 
-import {
-    isProgramError,
-    type Address,
-    type SOLANA_ERROR__INSTRUCTION_ERROR__CUSTOM,
-    type SolanaError,
-} from '@solana/kit';
+import { type Address } from '@solana/addresses';
+import { type SOLANA_ERROR__INSTRUCTION_ERROR__CUSTOM, type SolanaError } from '@solana/errors';
+import { isProgramError } from '@solana/programs';
 import { TOKEN_PROGRAM_ADDRESS } from '../programs';
 
 /** NotRentExempt: Lamport balance below rent-exempt threshold */

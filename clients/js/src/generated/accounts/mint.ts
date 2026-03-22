@@ -9,12 +9,19 @@
 import {
     assertAccountExists,
     assertAccountsExist,
-    combineCodec,
     decodeAccount,
     fetchEncodedAccount,
     fetchEncodedAccounts,
-    getAddressDecoder,
-    getAddressEncoder,
+    type Account,
+    type EncodedAccount,
+    type FetchAccountConfig,
+    type FetchAccountsConfig,
+    type MaybeAccount,
+    type MaybeEncodedAccount,
+} from '@solana/accounts';
+import { getAddressDecoder, getAddressEncoder, type Address } from '@solana/addresses';
+import {
+    combineCodec,
     getBooleanDecoder,
     getBooleanEncoder,
     getOptionDecoder,
@@ -27,19 +34,12 @@ import {
     getU64Encoder,
     getU8Decoder,
     getU8Encoder,
-    type Account,
-    type Address,
-    type EncodedAccount,
-    type FetchAccountConfig,
-    type FetchAccountsConfig,
     type FixedSizeCodec,
     type FixedSizeDecoder,
     type FixedSizeEncoder,
-    type MaybeAccount,
-    type MaybeEncodedAccount,
     type Option,
     type OptionOrNullable,
-} from '@solana/kit';
+} from '@solana/codecs';
 
 export type Mint = {
     /**

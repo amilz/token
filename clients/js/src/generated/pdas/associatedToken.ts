@@ -6,7 +6,12 @@
  * @see https://github.com/codama-idl/codama
  */
 
-import { getAddressEncoder, getProgramDerivedAddress, type Address, type ProgramDerivedAddress } from '@solana/kit';
+import {
+    getAddressEncoder,
+    getProgramDerivedAddress,
+    type Address,
+    type ProgramDerivedAddress,
+} from '@solana/addresses';
 
 export type AssociatedTokenSeeds = {
     /** The wallet address of the associated token account. */

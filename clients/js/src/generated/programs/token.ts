@@ -6,30 +6,27 @@
  * @see https://github.com/codama-idl/codama
  */
 
+import { type Address } from '@solana/addresses';
+import { containsBytes, getU8Encoder, type ReadonlyUint8Array } from '@solana/codecs';
 import {
-    assertIsInstructionWithAccounts,
-    containsBytes,
-    getU8Encoder,
     SOLANA_ERROR__PROGRAM_CLIENTS__FAILED_TO_IDENTIFY_ACCOUNT,
     SOLANA_ERROR__PROGRAM_CLIENTS__FAILED_TO_IDENTIFY_INSTRUCTION,
     SOLANA_ERROR__PROGRAM_CLIENTS__UNRECOGNIZED_INSTRUCTION_TYPE,
     SolanaError,
-    type Address,
+} from '@solana/errors';
+import { assertIsInstructionWithAccounts, type Instruction, type InstructionWithData } from '@solana/instructions';
+import {
     type ClientWithRpc,
     type ClientWithTransactionPlanning,
     type ClientWithTransactionSending,
-    type GetAccountInfoApi,
-    type GetMultipleAccountsApi,
-    type Instruction,
-    type InstructionWithData,
-    type ReadonlyUint8Array,
-} from '@solana/kit';
+} from '@solana/plugin-interfaces';
 import {
     addSelfFetchFunctions,
     addSelfPlanAndSendFunctions,
     type SelfFetchFunctions,
     type SelfPlanAndSendFunctions,
-} from '@solana/kit/program-client-core';
+} from '@solana/program-client-core';
+import { type GetAccountInfoApi, type GetMultipleAccountsApi } from '@solana/rpc-api';
 import {
     getMintCodec,
     getMultisigCodec,

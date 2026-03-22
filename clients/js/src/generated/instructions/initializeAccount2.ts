@@ -6,30 +6,29 @@
  * @see https://github.com/codama-idl/codama
  */
 
+import { getAddressDecoder, getAddressEncoder, type Address } from '@solana/addresses';
 import {
     combineCodec,
-    getAddressDecoder,
-    getAddressEncoder,
     getStructDecoder,
     getStructEncoder,
     getU8Decoder,
     getU8Encoder,
-    SOLANA_ERROR__PROGRAM_CLIENTS__INSUFFICIENT_ACCOUNT_METAS,
-    SolanaError,
     transformEncoder,
-    type AccountMeta,
-    type Address,
     type FixedSizeCodec,
     type FixedSizeDecoder,
     type FixedSizeEncoder,
+    type ReadonlyUint8Array,
+} from '@solana/codecs';
+import { SOLANA_ERROR__PROGRAM_CLIENTS__INSUFFICIENT_ACCOUNT_METAS, SolanaError } from '@solana/errors';
+import {
+    type AccountMeta,
     type Instruction,
     type InstructionWithAccounts,
     type InstructionWithData,
     type ReadonlyAccount,
-    type ReadonlyUint8Array,
     type WritableAccount,
-} from '@solana/kit';
-import { getAccountMetaFactory, type ResolvedInstructionAccount } from '@solana/kit/program-client-core';
+} from '@solana/instructions';
+import { getAccountMetaFactory, type ResolvedInstructionAccount } from '@solana/program-client-core';
 import { TOKEN_PROGRAM_ADDRESS } from '../programs';
 
 export const INITIALIZE_ACCOUNT2_DISCRIMINATOR = 16;

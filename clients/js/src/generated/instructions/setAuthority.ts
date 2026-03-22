@@ -6,38 +6,36 @@
  * @see https://github.com/codama-idl/codama
  */
 
+import { getAddressDecoder, getAddressEncoder, type Address } from '@solana/addresses';
 import {
-    AccountRole,
     combineCodec,
-    getAddressDecoder,
-    getAddressEncoder,
     getOptionDecoder,
     getOptionEncoder,
     getStructDecoder,
     getStructEncoder,
     getU8Decoder,
     getU8Encoder,
-    SOLANA_ERROR__PROGRAM_CLIENTS__INSUFFICIENT_ACCOUNT_METAS,
-    SolanaError,
     transformEncoder,
-    type AccountMeta,
-    type AccountSignerMeta,
-    type Address,
     type Codec,
     type Decoder,
     type Encoder,
+    type Option,
+    type OptionOrNullable,
+    type ReadonlyUint8Array,
+} from '@solana/codecs';
+import { SOLANA_ERROR__PROGRAM_CLIENTS__INSUFFICIENT_ACCOUNT_METAS, SolanaError } from '@solana/errors';
+import {
+    AccountRole,
+    type AccountMeta,
     type Instruction,
     type InstructionWithAccounts,
     type InstructionWithData,
-    type Option,
-    type OptionOrNullable,
     type ReadonlyAccount,
     type ReadonlySignerAccount,
-    type ReadonlyUint8Array,
-    type TransactionSigner,
     type WritableAccount,
-} from '@solana/kit';
-import { getAccountMetaFactory, type ResolvedInstructionAccount } from '@solana/kit/program-client-core';
+} from '@solana/instructions';
+import { getAccountMetaFactory, type ResolvedInstructionAccount } from '@solana/program-client-core';
+import { type AccountSignerMeta, type TransactionSigner } from '@solana/signers';
 import { TOKEN_PROGRAM_ADDRESS } from '../programs';
 import { getAuthorityTypeDecoder, getAuthorityTypeEncoder, type AuthorityType, type AuthorityTypeArgs } from '../types';
 
